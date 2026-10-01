@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6807227930578EB200756BB2 /* ParallaxSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6807227830578EB200756BB2 /* ParallaxSwiftUI */; };
 		680CA73B306EB38A005D53EB /* ParallaxSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 680CA73A306EB38A005D53EB /* ParallaxSwiftUI */; };
+		680CA7DB306ED6AA005D53EB /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 680CA7DA306ED6AA005D53EB /* RevenueCat */; };
+		680CA7E1306ED740005D53EB /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 680CA7E0306ED740005D53EB /* RevenueCatUI */; };
 		683856CE304A6D32004017DD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683856CD304A6D32004017DD /* WidgetKit.framework */; };
 		683856D0304A6D32004017DD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683856CF304A6D32004017DD /* SwiftUI.framework */; };
 		683856E1304A6D33004017DD /* TrueNorthWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 683856CB304A6D32004017DD /* TrueNorthWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -68,7 +70,6 @@
 				MountainScapeView.swift,
 				ScrollingMountainsView.swift,
 				Settings/AboutView.swift,
-				Settings/WolfStyleView.swift,
 				TrueNorthIconCool.icon,
 				TrueNorthIconOriginal.icon,
 				TrueNorthIconTopHat.icon,
@@ -124,6 +125,8 @@
 		000000000000000130000000 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				680CA7E1306ED740005D53EB /* RevenueCatUI in Frameworks */,
+				680CA7DB306ED6AA005D53EB /* RevenueCat in Frameworks */,
 				683856F8304B9680004017DD /* SDWebImageSwiftUI in Frameworks */,
 				6807227930578EB200756BB2 /* ParallaxSwiftUI in Frameworks */,
 			);
@@ -192,6 +195,8 @@
 			packageProductDependencies = (
 				683856F7304B9680004017DD /* SDWebImageSwiftUI */,
 				6807227830578EB200756BB2 /* ParallaxSwiftUI */,
+				680CA7DA306ED6AA005D53EB /* RevenueCat */,
+				680CA7E0306ED740005D53EB /* RevenueCatUI */,
 			);
 			productName = MyApp;
 			productReference = 000000000000000000000120 /* TrueNorth.app */;
@@ -248,6 +253,7 @@
 			packageReferences = (
 				683856F6304B9680004017DD /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				6807227730578EB200756BB2 /* XCRemoteSwiftPackageReference "ParallaxSwiftUI" */,
+				680CA7D7306ED6AA005D53EB /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = 000000000000000000000020 /* Products */;
@@ -634,6 +640,14 @@
 				minimumVersion = 1.0.5;
 			};
 		};
+		680CA7D7306ED6AA005D53EB /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.92.0;
+			};
+		};
 		683856F6304B9680004017DD /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -654,6 +668,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6807227730578EB200756BB2 /* XCRemoteSwiftPackageReference "ParallaxSwiftUI" */;
 			productName = ParallaxSwiftUI;
+		};
+		680CA7DA306ED6AA005D53EB /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 680CA7D7306ED6AA005D53EB /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+		680CA7E0306ED740005D53EB /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 680CA7D7306ED6AA005D53EB /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
 		};
 		683856F7304B9680004017DD /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -7,6 +7,9 @@
 
 import Foundation
 import SwiftUI
+import RevenueCat
+import RevenueCatUI
+import ParallaxSwiftUI
 
 struct SettingsRow: View {
     let title: String
@@ -66,11 +69,62 @@ struct SettingsImageRow: View {
 }
 
 struct SettingsView: View {
+    @Environment(EntitlementStore.self) private var entitlements
     @Environment(\.dismiss) var dismiss
+    @State private var displayPaywall = false
 
     var body: some View {
         NavigationStack {
             List {
+                
+                if(!entitlements.isPremium) {
+                Section {
+                    VStack {
+                        
+                        ZStack {
+                            StarCanvasView()
+                                .scaleEffect(1.2)
+                                .parallax(amount: 30, direction: .both)
+                            WolfSpriteView(animation: .howl)
+                        }
+                        .glassEffect(.regular.tint(.northBackground.opacity(0.5)), in: RoundedRectangle(cornerRadius: 20))
+                        .cornerRadius(20)
+                        .clipped()
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Support The Pack")
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                                    .padding(.bottom, 0)
+                                VStack(alignment: .leading) {
+                                    BulletPointView(text: "More wolf colors", symbol: "paintpalette.fill")
+                                    BulletPointView(text: "Customize app icon", symbol: "circle.grid.2x2.topleft.checkmark.filled")
+                                }
+                                .padding(.top, -3)
+                                .padding(.bottom, 2)
+                                Button("Upgrade To Pack Pro") {
+                                    displayPaywall.toggle()
+                                }
+                                .buttonStyle(.glassProminent)
+                                .tint(.northBlue)
+                                .sheet(isPresented: $displayPaywall) {
+                                    PaywallView()
+                                        .onDisappear() {
+                                            Task { await entitlements.checkEntitlement() }
+                                        }
+                                }
+                                Spacer()
+                            }
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
+                    .clipped()
+                    
+                    .padding(2)
+                }
+            }
 
                 NavigationLink(destination: WolfStyleView()) {
                     SettingsImageRow(
@@ -79,7 +133,14 @@ struct SettingsView: View {
                         backgroundColor: .northBackground
                     )
                 }
+                //                    NavigationLink(destination: IconPickerView()) {
+                //                        SettingsRow(title: "Icon", iconName: "square.fill", backgroundColor: .northBackground)
+                //                    }
+
                 Section {
+                    //                    NavigationLink(destination: AboutView()) {
+                    //                        SettingsRow(title: "Pack Pro", iconName: "scribble.variable", backgroundColor: .northBackground)
+                    //                    }
                     NavigationLink(destination: AboutView()) {
                         SettingsRow(
                             title: "About",
@@ -99,5 +160,8 @@ struct SettingsView: View {
             }
             .navigationTitle("Settings")
         }
+        .onAppear {
+            Task { await entitlements.checkEntitlement() }
+            }
     }
 }

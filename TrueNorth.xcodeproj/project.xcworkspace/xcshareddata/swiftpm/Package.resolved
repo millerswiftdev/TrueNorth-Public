@@ -1,5 +1,5 @@
 {
-  "originHash" : "1680c16ba51ef82d1a210f80844bc3ca078caf61615f039a4b3477338e5e0420",
+  "originHash" : "eec4141e9d9c1baf6b1df8bb81cec1f6c00fd1825f63377feef24c6d99a75739",
   "pins" : [
     {
       "identity" : "parallaxswiftui",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "b2bde7ec73e2d6f3d960aa14a125bd9f1f7fa605",
         "version" : "1.0.5"
+      }
+    },
+    {
+      "identity" : "purchases-ios-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RevenueCat/purchases-ios-spm.git",
+      "state" : {
+        "revision" : "e45bb84b726885492ce4e7ee94ddb252d171a205",
+        "version" : "5.92.0"
       }
     },
     {

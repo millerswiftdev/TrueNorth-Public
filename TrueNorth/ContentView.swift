@@ -10,14 +10,17 @@ import SDWebImageSwiftUI
 import SwiftData
 import SwiftUI
 import WidgetKit
+import RevenueCat
 
 @main
 struct TrueNorthApp: App {
     @AppStorage("showWelcome") private var showWelcome: Bool = true
+    @State private var entitlements = EntitlementStore()
 
     let container: ModelContainer
 
     init() {
+        Purchases.configure(withAPIKey: "test_aSwIYiyYgeAdNAouTItGxhHOECJ")
         do {
             container = try ModelContainer(for: Goal.self, Wolf.self)
 
@@ -39,6 +42,8 @@ struct TrueNorthApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(entitlements)
+                .task { await entitlements.checkEntitlement() }
                 .sheet(isPresented: $showWelcome) {
                     WelcomeView(isShowingSheet: $showWelcome)
                         .ignoresSafeArea()
