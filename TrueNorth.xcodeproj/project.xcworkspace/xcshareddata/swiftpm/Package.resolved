@@ -1,0 +1,33 @@
+{
+  "originHash" : "1680c16ba51ef82d1a210f80844bc3ca078caf61615f039a4b3477338e5e0420",
+  "pins" : [
+    {
+      "identity" : "parallaxswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Priva28/ParallaxSwiftUI",
+      "state" : {
+        "revision" : "b2bde7ec73e2d6f3d960aa14a125bd9f1f7fa605",
+        "version" : "1.0.5"
+      }
+    },
+    {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "state" : {
+        "revision" : "2de3a496eaf6df9a1312862adcfd54acd73c39c0",
+        "version" : "5.21.7"
+      }
+    },
+    {
+      "identity" : "sdwebimageswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImageSwiftUI",
+      "state" : {
+        "revision" : "0e331457ca9af2f0b08bcaa138a91ffb907b004f",
+        "version" : "3.1.4"
+      }
+    }
+  ],
+  "version" : 3
+}
